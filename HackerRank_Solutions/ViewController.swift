@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        countApplesAndOranges(s: 2, t: 3, a: 1, b: 5, apples: [2], oranges: [-2])
+       bonappetit(bill: [3,10,2,9], k: 1, b:12)
     }
     
     //PLUSMİNUS QUESTİON
@@ -90,6 +90,26 @@ class ViewController: UIViewController {
         }
     print(apple)
     print(orange)
+    }
+    
+    // Bill Division
+    
+    func bonappetit(bill:[Int], k: Int , b: Int) -> Void {
+        var total = bill.reduce(0,+)
+        var stotal = 0
+        for index in 0 ... bill.count-1 {
+            if index != k {
+                stotal += bill[index]
+            }
+        }
+        
+        var annaCost = stotal/2
+       // var brianCost = stotal/2 + (total - stotal)
+         if b == annaCost {
+             print("Bon Appetit")
+         } else {
+             print(b - annaCost)
+         }
     }
 
 }
