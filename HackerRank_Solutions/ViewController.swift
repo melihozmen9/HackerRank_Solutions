@@ -12,8 +12,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-       bonappetit(bill: [3,10,2,9], k: 1, b:12)
+       
+      insertionsort1(n: 5, arr: [2,4,6,8,3])
     }
+    
+   
+    
     
     //PLUSMİNUS QUESTİON
     func plusMinus(arr:[Int] )-> Void  {
@@ -111,6 +115,62 @@ class ViewController: UIViewController {
              print(b - annaCost)
          }
     }
+    
+    
+    // Sales By Match
+    var pair = 0
+    func sockMerchant (n : Int, ar : [Int]) {
+        var array = ar
+        for i in 0 ... array.count-2 {
+            for j in 1 ... array.count-1{
+                if i == j {
+                    pair += 1
+                    array.remove(at: i)
+                    array.remove(at: j)
+                }
+            }
+        }
+        print(pair)
+    }
+  
+    
+    //Insertion sort 1
+    func insertionsort1(n:Int, arr:[Int]) -> Void {
+        let last = arr.last!
+        var newArray:[Int] = arr
+        let min = newArray.min()
+        if last != min {
+        for i in stride(from: (n-2) , to: 0, by: -1){
+            if last < newArray[i]{
+                newArray[i+1] = newArray[i]
+              //  print(newArray.debugDescription.replacingOccurrences(of: ", ", with: " "))
+                var stringArray = newArray.map { String($0) }
+                stringArray.joined(separator:" ")
+                print(stringArray.joined(separator:" "))
+            }
+        }
+        }else {
+            for i in stride(from: (n-2) , to: 0, by: -1){
+            if last < newArray[i]{
+                newArray[i+1] = newArray[i]
+              //  print(newArray.debugDescription.replacingOccurrences(of: ", ", with: " "))
+                var stringArray = newArray.map { String($0) }
+                stringArray.joined(separator:" ")
+                print(stringArray.joined(separator:" "))
+            }
+                
+            
+        }
+            newArray[1] = newArray[0]
+            
+            var stringSortedArray1 = newArray.map{ String ($0) }
+            print(stringSortedArray1.joined(separator: " "))
+             }
+        var sortedArray = arr.sorted()
+        var stringSortedArray = sortedArray.map{ String ($0) }
+        print(stringSortedArray.joined(separator: " "))
+    }
+    
 
 }
 
