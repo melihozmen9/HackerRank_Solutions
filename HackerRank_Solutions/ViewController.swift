@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
        
-      insertionsort1(n: 5, arr: [2,4,6,8,3])
+     
     }
     
    
@@ -170,6 +170,50 @@ class ViewController: UIViewController {
         var stringSortedArray = sortedArray.map{ String ($0) }
         print(stringSortedArray.joined(separator: " "))
     }
+    
+    // InsertionSort2
+    func insertionSort2(n:Int,arr:[Int]) -> Void {
+        var s = 0
+        var s2 = n
+        var narr = arr
+        var narr2 : [Int] = []
+        var a = 0
+        var b = 0
+        var c = 0
+        for i in 1 ... n-2 {
+          
+            
+            if narr[i+1] < narr[i] {
+                c = narr[i+1]
+                a = narr[i]
+                b = c
+                narr[i] = b
+                narr[i+1] = a
+                print(narr)
+                print("narr yazıldı")
+                
+                
+                if narr[i+1] < narr[i-1] {
+                    s = i + 1
+                    for j in 0 ... s {
+                        narr2.append(narr[j])
+                    }
+                    narr2.sorted()
+                    for k in stride(from: n-1, to: s+1, by: -1) {
+                        narr2.append(narr[k])
+                    }
+                    print(narr2)
+                    print("narr2 yazıldı")
+                }
+            }
+            
+            
+            
+            
+        }
+    }
+    
+   
     
 
 }
