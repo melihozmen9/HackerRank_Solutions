@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-       
+       divisibleSumPairs(n: 6, k: 3, ar: [1, 3, 2, 6, 1, 2])
      
     }
     
@@ -211,6 +211,60 @@ class ViewController: UIViewController {
             
             
         }
+    }
+    
+    // The Cats and Mouse
+    func catsAndMouse(x:Int,y:Int,z:Int) -> String {
+        var distance1 = abs(z - x)
+        var distance2 = abs(z-y)
+        if distance1 < distance2 {
+            return "Cat A"
+        } else if distance2 < distance1 {
+            return "Cat B"
+        } else {
+            return "Mouse C"
+        }
+    }
+    
+    // Breaking The Records
+    
+    func breakingTherecords(scores : [Int]) -> [Int] {
+        var max = scores[0]
+        var min = scores[0]
+        var maxCount = 0
+        var minCount = 0
+        
+        for i in 0...scores.count-1 {
+            if scores[i] > max {
+                max = scores[i]
+                maxCount += 1
+                
+            }
+            if scores[i] < min {
+                min = scores[i]
+                minCount += 1
+            }
+        }
+       print([maxCount,minCount])
+        return[maxCount,minCount]
+        
+    }
+    
+    func divisibleSumPairs(n:Int,k:Int,ar:[Int]){
+        var pairs = 0
+        var sum = 0
+        for i in 0...ar.count-1 {
+            for j in 0...ar.count-1 {
+                if i != j {
+                if (ar[i] + ar[j]) % k == 0 {
+                    pairs += 1
+                    print(ar[i],ar[j])
+                }
+                }
+            }
+        }
+        
+        print(pairs/2)
     }
     
    
