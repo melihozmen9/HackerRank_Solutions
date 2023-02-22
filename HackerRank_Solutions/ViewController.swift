@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-       divisibleSumPairs(n: 6, k: 3, ar: [1, 3, 2, 6, 1, 2])
+      
+        let x = findDigits(n: 1000)
+        print(x)
      
     }
     
@@ -250,6 +252,7 @@ class ViewController: UIViewController {
         
     }
     
+    // Divisible Sum Pairs
     func divisibleSumPairs(n:Int,k:Int,ar:[Int]){
         var pairs = 0
         var sum = 0
@@ -267,8 +270,318 @@ class ViewController: UIViewController {
         print(pairs/2)
     }
     
+    
+    // Counting Valleys
+    func countingValleys(steps:Int,path:String) -> Int {
+        var array = Array(path)
+        var sum = 0
+        var count = 0
+        for i in 0...array.count-1 {
+            if sum == 0 && array[i] == "D"{
+                count += 1
+            }
+            if array[i] == "U"{
+                sum += 1
+            }
+            if array[i] == "D"{
+                sum -= 1
+            }
+        }
+        return count
+    }
    
     
+    // ElectronicShops
+    
+    func getmoneySpent(keyboards:[Int],drives:[Int],b:Int) -> Int{
+        var sum = 0
+        var max = 0
+        for i in 0...keyboards.count-1{
+            for j in 0...drives.count-1{
+                sum = keyboards[i] + drives[j]
+                if sum <= b {
+                    if sum > max {
+                        max = sum
+                    }
+                    
+                }
+            }
+        }
+        if max > 0 {
+           return max
+        } else {
+            return -1
+        }
+        
+    }
+    
+    
+    //Camel Case
+    
+    func camelCase(s:String)  -> Int {
+        var array = Array(s)
+        var sum = 1
+        for i in 0...array.count-1 {
+            if array[i].isUppercase {
+                 sum += 1
+            }
+        }
+        return sum
+    }
+    func designerPdfViewer(h: [Int], word: String) -> Int {
+        // Write your code here
+        var height = 0
+        var heightest = 0
+        for i in word {
+    switch i {
+        case "a" :
+        height = h[0]
+        if height > heightest {
+            heightest = height
+        }
+         case "b" :
+        height = h[1]
+          if height > heightest {
+            heightest = height
+        }
+         case "c" :
+        height = h[2]
+          if height > heightest {
+            heightest = height
+        }
+         case "d" :
+        height = h[3]
+          if height > heightest {
+            heightest = height
+        }
+         case "e" :
+        height = h[4]
+          if height > heightest {
+            heightest = height
+        }
+         case "f" :
+        height = h[5]
+        if height > heightest {
+            heightest = height
+        }
+         case "g" :
+        height = h[6]
+          if height > heightest {
+            heightest = height
+        }
+         case "h" :
+        height = h[7]
+         if height > heightest {
+            heightest = height
+        }
+          case "i" :
+        height = h[8]
+         if height > heightest {
+            heightest = height
+        }
+          case "j" :
+        height = h[9]
+         if height > heightest {
+            heightest = height
+        }
+          case "k" :
+        height = h[10]
+         if height > heightest {
+            heightest = height
+        }
+          case "l" :
+        height = h[11]
+         if height > heightest {
+            heightest = height
+        }
+          case "m" :
+        height = h[12]
+         if height > heightest {
+            heightest = height
+        }
+          case "n" :
+        height = h[13]
+         if height > heightest {
+            heightest = height
+        }
+          case "o" :
+        height = h[14]
+         if height > heightest {
+            heightest = height
+        }
+          case "p" :
+        height = h[15]
+         if height > heightest {
+            heightest = height
+        }
+          case "q" :
+        height = h[16]
+         if height > heightest {
+            heightest = height
+        }
+          case "r" :
+        height = h[17]
+         if height > heightest {
+            heightest = height
+        }
+          case "s" :
+        height = h[18]
+         if height > heightest {
+            heightest = height
+        }
+          case "t" :
+        height = h[19]
+         if height > heightest {
+            heightest = height
+        }
+          case "u" :
+        height = h[20]
+         if height > heightest {
+            heightest = height
+        }
+           case "v" :
+        height = h[21]
+         if height > heightest {
+            heightest = height
+        }
+            case "w" :
+        height = h[22]
+         if height > heightest {
+            heightest = height
+        }
+             case "x" :
+        height = h[23]
+         if height > heightest {
+            heightest = height
+        }
+             case "y" :
+        height = h[24]
+         if height > heightest {
+            heightest = height
+        }
+    
+    default:
+        height = h[25]
+         if height > heightest {
+            heightest = height
+        }
+    }
+        }
+        return word.count * heightest
+    }
+
+    func timeInWords(h: Int, m: Int) -> String {
+        // Write your code here
+        var string = ""
+    let formatter = NumberFormatter()
+    formatter.numberStyle = NumberFormatter.Style.spellOut
+
+    let spellOutHour = formatter.string(for: h)!
+
+
+
+    if m == 00 {
+        string = "\(spellOutHour) o' clock"
+    }else if m == 15 {
+        string = "quarter past \(spellOutHour)"
+    } else if m == 01 {
+        let spellOutMinute = formatter.string(for: m)!
+        string = "\(spellOutMinute) minute past \(spellOutHour)"
+    } else if m == 30 {
+        string = "half past \(spellOutHour)"
+    } else if m == 45 {
+        if h >= 0 && h < 11 {
+       let spellOutHourNext = formatter.string(for: (h+1))!
+        string = "quarter to \(spellOutHourNext)"
+        } else {
+                let spellOutHourNext = formatter.string(for: 0)!
+                string = "quarter to \(spellOutHourNext)"
+            }
+    } else if m > 00 && m < 20 {
+        let spellOutMinute = formatter.string(for: m)!
+        string = "\(spellOutMinute) minutes past \(spellOutHour)"
+    }   else if m > 19 && m < 30 {
+            let spellOutMinute = formatter.string(for: m)!
+        let replaced = spellOutMinute.replacingOccurrences(of: "-", with: " ")
+            string = "\(replaced) minutes past \(spellOutHour)"
+    }else if m > 30 && m < 41 {
+        if h >= 0 && h < 11 {
+       let spellOutHourNext = formatter.string(for: (h+1))!
+            let n = 60 - m
+            let spellOutMinute = formatter.string(for: n)!
+            let replaced = spellOutMinute.replacingOccurrences(of: "-", with: " ")
+            string = "\(replaced) minutes to \(spellOutHourNext)"
+    } else {
+        let spellOutHourNext = formatter.string(for: 0)!
+        let n = 60 - m
+        let spellOutMinute = formatter.string(for: n)!
+        let replaced = spellOutMinute.replacingOccurrences(of: "-", with: " ")
+        string = "\(replaced) minutes to \(spellOutHourNext)"
+    }
+       
+    }else if m > 40 && m < 60 {
+        if h >= 0 && h < 11 {
+       let spellOutHourNext = formatter.string(for: (h+1))!
+            let n = 60 - m
+            let spellOutMinute = formatter.string(for: n)!
+            string = "\(spellOutMinute) minutes to \(spellOutHourNext)"
+    } else {
+        let spellOutHourNext = formatter.string(for: 0)!
+        let n = 60 - m
+        let spellOutMinute = formatter.string(for: n)!
+        string = "\(spellOutMinute) minutes to \(spellOutHourNext)"
+    }
+       
+    }
+    return string
+    }
+        func beautifulDays(i: Int, j: Int, k: Int) -> Int {
+         
+            var sayac = 0
+            for a in i...j {
+                
+                var value = a
+                var reverseNum = 0
+                while(value != 0){
+                   reverseNum = reverseNum * 10
+                   reverseNum = reverseNum + value % 10
+                   value = value/10
+                }
+                // değerin tersi bulundu.
+               var sonuc = abs(Double(a) - Double(reverseNum)) / Double(k)
+                if sonuc.truncatingRemainder(dividingBy: 1.0) == 0.0 {
+                    sayac += 1
+                }
+            }
+            return sayac
+        }
+    func findDigits(n: Int) -> Int {
+        // Write your code here
+        var sayac = 0
+        let digits = String(n).compactMap{Int(String($0))}
+        for i in 0...digits.count-1 {
+            if digits[i] != 0 {
+                if n % digits[i] == 0 {
+                    sayac += 1
+                }
+            }
+        }
+    return sayac
+    }
+    
+    func viralAdvertising(n: Int) -> Int {
+       
+    var liked = 0
+    var cumulative = 0
+    var shared = 5
+    for i in 1...n {
+        liked = Int(floor(Double(shared)/2.0))
+        cumulative = cumulative + liked
+        shared = liked * 3
+    }
+    return cumulative
+    }
+
 
 }
 
