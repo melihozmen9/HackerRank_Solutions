@@ -13,12 +13,91 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
       
-        let x = findDigits(n: 1000)
-        print(x)
+   let sonuc = calPoints(["5","2","C","D","+"])
+        print(sonuc)
+        
+        let sonuc2 = solution("turing turing", "google")
+        print(sonuc2)
      
     }
     
-   
+        func calPoints(_ ops: [String]) -> Int {
+            var sum = 0
+            var validScores: [Int] = []
+            
+            for op in ops {
+                switch op {
+                case "C":
+                    if let lastScore = validScores.popLast() {
+                        sum -= lastScore
+                    }
+                case "D":
+                    if let lastScore = validScores.last {
+                        let newScore = lastScore * 2
+                        sum += newScore
+                        validScores.append(newScore)
+                    }
+                case "+":
+                    if validScores.count >= 2 {
+                        let newScore = validScores[validScores.count - 1] + validScores[validScores.count - 2]
+                        sum += newScore
+                        validScores.append(newScore)
+                    }
+                default:
+                    if let score = Int(op) {
+                        sum += score
+                        validScores.append(score)
+                    }
+                }
+            }
+            
+            return sum
+        }
+    
+
+    
+  func solution(_ set1: String, _ set2: String) -> [String] {
+            var result = [String]()
+            
+            // split the input sets into arrays of words
+            let set1Array = set1.components(separatedBy: " ")
+            let set2Array = set2.components(separatedBy: " ")
+            
+            // create sets of words from the arrays
+            let set1Words = Set(set1Array)
+            let set2Words = Set(set2Array)
+            
+            // iterate over the words in set1 and check if they are odd
+            for word in set1Words {
+                if !set2Words.contains(word) && set1Array.filter({$0 == word}).count == 1 {
+                    result.append(word)
+                }
+            }
+            
+            // iterate over the words in set2 and check if they are odd
+            for word in set2Words {
+                if !set1Words.contains(word) && set2Array.filter({$0 == word}).count == 1 {
+                    result.append(word)
+                }
+            }
+            
+            return result
+        }
+    
+
+    
+    func rotate(_ nums: [Int], _ k: Int) -> [Int] {
+        var solution: [Int] = []
+        var mutableNums = nums
+        
+        for _ in 1...k {
+            let last = mutableNums.removeLast()
+            mutableNums.insert(last, at: 0)
+        }
+        
+        solution = mutableNums
+        return solution
+    }
     
     
     //PLUSMİNUS QUESTİON
@@ -581,7 +660,37 @@ class ViewController: UIViewController {
     }
     return cumulative
     }
+    func appendAndDelete(s: String, t: String, k: Int) {
+       
+        var sayac = 0
+        var min = 0
+        if s.count < t.count {
+            min = s.count
+        } else {
+            min = t.count
+        }
+        var sArray = Array(s)
+        var tArray = Array(t)
+        for i in 0...min-1 {
+            
+                if sArray[i] == tArray[i] {
+                    print("\(sArray[i]) ve \(tArray[i]) eşit mi bakılıyor")
+                    sayac += 1
+                    print(sayac)
+                } else {
+                    break
+                }
+               
+            }
+        if (s.count - sayac) + (t.count - sayac) <= k {
+          print("Yes")
+        } else {
+            print("No")
+        }
+        }
+       
+    }
 
 
-}
+
 
