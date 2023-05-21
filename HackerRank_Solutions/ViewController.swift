@@ -13,13 +13,47 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
       
-   let sonuc = calPoints(["5","2","C","D","+"])
+   let sonuc = solution("gold2 black1 white3")
         print(sonuc)
         
-        let sonuc2 = solution("turing turing", "google")
-        print(sonuc2)
+      
      
     }
+    
+    func solution(_ s: String) -> String {
+        let colors = s.components(separatedBy: " ")
+        var result = Array(repeating: "", count: colors.count)
+        
+        for color in colors {
+            let index = Int(String(color.last!))!
+            let name = String(color.dropLast())
+            result[index-1] = name
+        }
+        
+        return result.joined(separator: " ")
+    }
+    
+//    func solution(_ s: String) -> String {
+//        var result = ""
+//        var currentChar: Character = " "
+//        var count = 1
+//
+//        for char in s {
+//            if char == currentChar {
+//                count += 1
+//                if count > 3 {
+//                    continue
+//                }
+//            } else {
+//                count = 1
+//            }
+//
+//            currentChar = char
+//            result.append(char)
+//        }
+//
+//        return result
+//    }
     
         func calPoints(_ ops: [String]) -> Int {
             var sum = 0
@@ -56,7 +90,7 @@ class ViewController: UIViewController {
     
 
     
-  func solution(_ set1: String, _ set2: String) -> [String] {
+  func solution123(_ set1: String, _ set2: String) -> [String] {
             var result = [String]()
             
             // split the input sets into arrays of words
